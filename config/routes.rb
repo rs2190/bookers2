@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  # get 'books/index'
+  # get 'books/create'
+  # get 'books/show'
+  # get 'books/edit'
+  # get 'books/update'
+  # get 'books/destory'
+  resources :books
+
+
   root to: 'homes#top'
   get 'homes/about'
 

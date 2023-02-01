@@ -16,6 +16,9 @@
     <!--devise 側で用意しているヘルパーメソッド-->
     <% if user_signed_in? %>
       <!--ログイン済-->
+       <li>
+        <%= link_to "Home", destroy_user_session_path, method: :delete %>
+      </li>
       <li>
         <%= link_to "Users", destroy_user_session_path, method: :delete %>
       </li>
@@ -28,7 +31,7 @@
     <% else %>
       <!--ログインしていない-->
       <li>
-        <%= link_to "Home", destroy_user_session_path, method: :delete %>
+        <%= link_to "Home", root_path %>
       </li>
       <li>
         <%= link_to "About", homes_about_path %>
