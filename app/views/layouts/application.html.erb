@@ -12,6 +12,35 @@
   </head>
 
   <body>
+    <header>
+    <!--devise 側で用意しているヘルパーメソッド-->
+    <% if user_signed_in? %>
+      <!--ログイン済-->
+      <li>
+        <%= link_to "Users", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "Books", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <!--ログインしていない-->
+      <li>
+        <%= link_to "Home", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "About", homes_about_path %>
+      </li>
+      <li>
+        <%= link_to "Sign up ", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to " Log in", new_user_session_path %>
+      </li>
+    <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
