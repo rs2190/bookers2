@@ -17,13 +17,13 @@
     <% if user_signed_in? %>
       <!--ログイン済-->
        <li>
-        <%= link_to "Home", destroy_user_session_path, method: :delete %>
+        <%= link_to "Home", users_path %>
       </li>
       <li>
-        <%= link_to "Users", destroy_user_session_path, method: :delete %>
+        <%= link_to "Users", users_path %>
       </li>
       <li>
-        <%= link_to "Books", destroy_user_session_path, method: :delete %>
+        <%= link_to "Books", books_path %>
       </li>
       <li>
         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
@@ -34,7 +34,7 @@
         <%= link_to "Home", root_path %>
       </li>
       <li>
-        <%= link_to "About", homes_about_path %>
+        <%= link_to "About", about_path %>
       </li>
       <li>
         <%= link_to "Sign up ", new_user_registration_path %>
@@ -45,5 +45,14 @@
     <% end %>
     </header>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+      	<div class="row">
+        	<div class="mx-auto">
+        		<p>CopyRight Infratop.inc</p>
+        	</div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
