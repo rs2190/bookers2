@@ -1,6 +1,5 @@
 # 上から順に処理するので、順番注意
 Rails.application.routes.draw do
-
   root to: 'homes#top'
   get 'homes/about', as: 'about'
 

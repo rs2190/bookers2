@@ -17,7 +17,7 @@
     <% if user_signed_in? %>
       <!--ログイン済-->
        <li>
-        <%= link_to "Home", users_path %>
+        <%= link_to "Home", user_path(current_user.id) %>
       </li>
       <li>
         <%= link_to "Users", users_path %>
@@ -44,7 +44,10 @@
       </li>
     <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <p id="notice"><%= flash[:notice] %></p>
+      <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
       	<div class="row">
