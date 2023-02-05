@@ -36,4 +36,26 @@ class ApplicationController < ActionController::Base
 
   end
 
+  # userテーブルのidをキーにして、select。（1件取得）。
+  def user_find
+
+    User.find(params[:id])
+
+  end
+
+  # bookテーブルのidをキーにして、select。（1件取得）。
+  def book_find
+
+    book.find(params[:id])
+
+  end
+
+  # bookをnew。
+  def book_new
+
+    Book.new
+
+  end
+
+
 end

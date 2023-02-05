@@ -22,24 +22,19 @@ class UsersController < ApplicationController
     end
 
     @user = user_find
+    @book = Book.new
+
 
   end
 
   def edit
+
+     @user = user_find
+
   end
 
   def update
   end
-
-  private
-
-  # booksテーブルのidをキーにして、select。（1件取得）。
-  def user_find
-
-      User.find(params[:id])
-
-  end
-
 
 
 end
