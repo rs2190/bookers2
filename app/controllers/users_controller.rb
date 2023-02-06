@@ -22,8 +22,8 @@ class UsersController < ApplicationController
     end
 
     @user = user_find
-    @book = Book.new
-
+    @book = book_new
+    @books = book_all
 
   end
 
@@ -34,7 +34,21 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = user_find
+    @user.update(user_params)
+
+    notice("You have updated user successfully.")
+    redirect_to user_path(@user.id)
+
   end
 
+  private
+
+  # userのストロングパラメータ
+  def user_params
+
+    params.require(:user).permit(:name, :profile_image, :body)
+
+  end
 
 end

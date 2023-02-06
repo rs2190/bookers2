@@ -57,5 +57,11 @@ class ApplicationController < ActionController::Base
 
   end
 
+  # allメソッドで、booksテーブルに保存されてる全データを取得
+  def book_all
 
+    # booksテーブルのidで昇順
+    Book.all.order(id: "ASC")
+
+  end
 end
