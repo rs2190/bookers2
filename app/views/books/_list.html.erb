@@ -1,0 +1,36 @@
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <% books.each do |book| %>
+    <tbody>
+      <tr>
+        <% if controller_path == 'books' && action_name == 'index' %>
+        <td>
+          <%= image_tag book.user.get_profile_image(100,100) %>
+        </td>
+        <% else %>
+        <td>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag book.user.get_profile_image(100,100) %>
+          <% end %>
+        </td>
+        <% end %>
+        <td>
+          <%= book.title %>
+        </td>
+        <td>
+          <%= book.body %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

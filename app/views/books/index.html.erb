@@ -1,2 +1,9 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+    <div class="row">
+        <div class="col-md-3">
+            <%= render 'users/info', user: @user %>
+            <%= render 'new', {book: @book, user: @user} %>
+        </div>
+        <%= render 'list', {books: @books, user: @user} %>
+    </div>
+</div>

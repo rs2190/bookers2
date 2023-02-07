@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def index
 
-    # booksテーブルのidで昇順
+    user_info_new_book_index
+    # usersテーブルのidで昇順
     @users = User.all.order(id: "ASC")
 
   end
@@ -21,9 +22,8 @@ class UsersController < ApplicationController
 
     end
 
-    @user = user_find
-    @book = book_new
-    @books = book_all
+    user_info_new_book_show
+    @books = Book.where(user_id: params[:id]).order(id: "ASC")
 
   end
 
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
+
     @user = user_find
     @user.update(user_params)
 

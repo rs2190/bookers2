@@ -36,17 +36,26 @@ class ApplicationController < ActionController::Base
 
   end
 
+
+
   # userテーブルのidをキーにして、select。（1件取得）。
   def user_find
 
-    User.find(params[:id])
+     User.find(params[:id])
+
+  end
+
+  # userテーブルのパラメーターをidをキーにして、select。（1件取得）。
+  def user_find_param(id)
+
+    User.find(id)
 
   end
 
   # bookテーブルのidをキーにして、select。（1件取得）。
   def book_find
 
-    book.find(params[:id])
+    Book.find(params[:id])
 
   end
 
@@ -64,4 +73,23 @@ class ApplicationController < ActionController::Base
     Book.all.order(id: "ASC")
 
   end
+
+  # user_info,new_bookをインスタンス変数を定義
+  def user_info_new_book_show
+
+    @user = user_find
+    @book = book_new
+
+  end
+
+  # user_info,new_bookをインスタンス変数を定義(一覧画面)
+  def user_info_new_book_index
+
+    @user = user_find_param(current_user.id)
+    @book = book_new
+
+
+  end
+
+
 end
