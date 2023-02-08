@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   # get 'books/show'
   # get 'books/edit'
   # get 'books/update'
-  # get 'books/destory'
-  resources :books , only: [:index, :create, :show, :edit, :update ,:destory]
+  # get 'books/destroy'
+  resources :books , only: [:index, :create, :show, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -14,7 +14,7 @@
     </tbody>
   </table>
   <div class="row">
-    <%= button_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block", method: :get do %>
+    <%=  link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
   </div>

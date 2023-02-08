@@ -36,8 +36,6 @@ class ApplicationController < ActionController::Base
 
   end
 
-
-
   # userテーブルのidをキーにして、select。（1件取得）。
   def user_find
 
@@ -83,7 +81,7 @@ class ApplicationController < ActionController::Base
   end
 
   # user_info,new_bookをインスタンス変数を定義(一覧画面)
-  def user_info_new_book_index
+  def user_info_new_book_current_user
 
     @user = user_find_param(current_user.id)
     @book = book_new

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def index
 
-    user_info_new_book_index
+    user_info_new_book_current_user
     # usersテーブルのidで昇順
     @users = User.all.order(id: "ASC")
 

@@ -1,2 +1,37 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+    <div class="row">
+        <div class="col-md-3">
+            <%= render 'users/info', user: @user %>
+            <%= render 'new', {book: @book, user: @user} %>
+        </div>
+        <div class="col-md-8 offset-md-1">
+          <h2>Book detail</h2>
+            <table class="table table-hover table-inverse">
+              <tbody>
+                <tr>
+                  <td>
+                     <%= link_to user_path(@user.id) do %>
+                        <%= image_tag @book2.user.get_profile_image(100,100) %><br>
+                        <%= @user.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= @book2.title %>
+                  </td>
+                  <td>
+                    <%= @book2.body %>
+                  </td>
+                  <td>
+                    <%=  link_to "Edit", edit_book_path(@book2.id), class: "btn btn-success" %>
+                  </td>
+                  <td>
+                    <%= form_with model: @book2, method: :delete, url: book_path(@book2.id) do |f| %>
+                      <%= f.submit 'Destroy', data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
