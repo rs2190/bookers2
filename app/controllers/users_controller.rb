@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  # 別ユーザーが更新などしないように制御を行う。
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
 

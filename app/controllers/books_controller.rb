@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
 
+  # 別ユーザーが更新などしないように制御を行う。
+  before_action :is_matching_login_user_books, only: [:create, :edit, :update, :destroy]
+
   def index
 
     user_info_new_book_current_user

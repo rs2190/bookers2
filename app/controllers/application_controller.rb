@@ -1,6 +1,7 @@
 # deviseのコントローラは直接修正できないため、全てのコントローラに対する処理を行える権限を持つ、ApplicationControllerに記述する必要があります。
 class ApplicationController < ActionController::Base
 
+  before_action :authenticate_user!, except: [:top]
   # devise利用の機能（ユーザ登録、ログイン認証など）が使われる前に、configure_permitted_parametersメソッドが実行されます。
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -86,6 +87,33 @@ class ApplicationController < ActionController::Base
     @user = user_find_param(current_user.id)
     @book = book_new
 
+
+  end
+
+  # 他のユーザーからのアクセスを制限
+  def is_matching_login_user
+
+    user_id = params[:id].to_i
+
+    unless user_id == current_user.id
+
+      redirect_to users_path
+
+    end
+
+  end
+
+  # 他のユーザーからのアクセスを制限
+  def is_matching_login_user_books
+
+    book = book_find
+    user_id = book.user_id.to_i
+
+    unless user_id == current_user.id
+
+      redirect_to books_path
+
+    end
 
   end
 
