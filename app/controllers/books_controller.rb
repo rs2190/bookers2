@@ -3,7 +3,6 @@ class BooksController < ApplicationController
   def index
 
     user_info_new_book_current_user
-    # usersテーブルのidで昇順
     @books = book_all
 
   end
@@ -24,10 +23,9 @@ class BooksController < ApplicationController
 
     else
 
-    user_info_new_book_index
-    # usersテーブルのidで昇順
+    @user = user_find_param(current_user.id)
     @books = book_all
-    render '/books'
+    render :index
 
     end
 
@@ -50,12 +48,16 @@ class BooksController < ApplicationController
   def update
 
     @book = book_find
+    book_id = @book.id
+
     if @book.update(book_params)
 
       redirect_book_path("You have updated book successfully.")
-      redirect_to book_path(@book2.id)
+      redirect_to book_path(book_id)
 
     else
+
+      render :edit
 
     end
 

@@ -12,9 +12,11 @@ class User < ApplicationRecord
   # ActiveStorageでプロフィール画像を保存できるように設定しました。
   has_one_attached :profile_image
 
-  # nameの文字数は、2文字から20文字まで
+  # nameの文字数は、2文字から20文字まで(一意性)
   validates :name,
-    length: { minimum: 2, maximum: 20 }
+    length: { minimum: 2, maximum: 20 },
+    uniqueness: true
+
 
   # bodyの文字数は、50文字まで
   validates :body,
