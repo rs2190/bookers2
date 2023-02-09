@@ -103,12 +103,13 @@ class ApplicationController < ActionController::Base
 
   end
 
-  # 他のユーザーからのアクセスを制限
+  # 他のユーザーからのアクセスを制限（books版）
   def is_matching_login_user_books
 
     book = book_find
     user_id = book.user_id.to_i
 
+    # 投稿したユーザーと同じIDか確認する。
     unless user_id == current_user.id
 
       redirect_to books_path
