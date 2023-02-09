@@ -12,6 +12,14 @@ class User < ApplicationRecord
   # ActiveStorageでプロフィール画像を保存できるように設定しました。
   has_one_attached :profile_image
 
+  # nameの文字数は、2文字から20文字まで
+  validates :name,
+    length: { minimum: 2, maximum: 20 }
+
+  # bodyの文字数は、50文字まで
+  validates :body,
+    length: { maximum: 50 }
+
   # プロフィール画像のgetterメソッド。<br>画像サイズ指定可能(width(integer):横,height(integer):高さ)(px)
   def get_profile_image(width, height)
 
