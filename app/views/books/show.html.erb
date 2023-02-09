@@ -16,11 +16,14 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= @book2.title %>
+                    <%= link_to book_path(@book2.id) do %>
+                      <%= @book2.title %>
+                    <% end %>
                   </td>
                   <td>
                     <%= @book2.body %>
                   </td>
+                  <% if @book2.user.id == current_user.id %>
                   <td>
                     <%=  link_to "Edit", edit_book_path(@book2.id), class: "btn btn-success" %>
                   </td>
@@ -29,6 +32,7 @@
                       <%= f.submit 'Destroy', data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
                     <% end %>
                   </td>
+                  <% end %>
                 </tr>
               </tbody>
             </table>

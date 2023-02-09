@@ -17,8 +17,9 @@ class BooksController < ApplicationController
     if @book.save
 
       notice("You have created book successfully.")
-      user_info_new_book_index
-      @book2 = book_find_book_id
+
+      path_jugde(controller_path, action_name)
+
       redirect_to book_path(@book.id)
 
     else
@@ -95,6 +96,39 @@ class BooksController < ApplicationController
     notice(word)
     user_info_new_book_current_user
     @book2 = book_find
+
+  end
+
+  # controller_path,action_nameで判定するインスタンスメソッド設定判定
+  def path_jugde(controller_path,action_name)
+
+    if (controller_path == 'users')
+
+      if (action_name == 'index')
+        user_info_new_book_current_user
+        @book2 = book_find_book_id
+
+      elsif (action_name == 'show')
+
+        user_info_new_book_current_user
+        @book2 = book_find_book_id
+
+      end
+
+    elsif (controller_path == 'books')
+
+      if (action_name == 'index')
+
+        user_info_new_book_current_user
+        @book2 = book_find
+
+      elsif (action_name == 'show')
+        user_info_new_book_current_user
+        @book2 = book_find
+
+      end
+
+    end
 
   end
 
