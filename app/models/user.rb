@@ -13,14 +13,10 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   # nameの文字数は、2文字から20文字まで(一意性)
-  validates :name,
-    length: { minimum: 2, maximum: 20 },
-    uniqueness: true
+  validates :name, length: { in: 2..20 }, uniqueness: true
 
-
-  # bodyの文字数は、50文字まで
-  validates :body,
-    length: { maximum: 50 }
+  # introductionの文字数は、50文字まで
+  validates :introduction, length: { maximum: 50 }
 
   # プロフィール画像のgetterメソッド。<br>画像サイズ指定可能(width(integer):横,height(integer):高さ)(px)
   def get_profile_image(width, height)

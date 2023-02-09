@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   # 別ユーザーが更新などしないように制御を行う。
   before_action :is_matching_login_user, only: [:edit, :update]
 
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   # userのストロングパラメータ
   def user_params
 
-    params.require(:user).permit(:name, :profile_image, :body)
+    params.require(:user).permit(:name, :profile_image, :introduction)
 
   end
 
