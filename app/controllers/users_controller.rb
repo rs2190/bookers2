@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   # 別ユーザーが更新などしないように制御を行う。
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:update]
 
   def index
 
@@ -32,7 +32,17 @@ class UsersController < ApplicationController
 
   def edit
 
-     @user = user_find
+    user_id = params[:id]
+
+    if user_id.to_i == current_user.id
+
+       @user = user_find
+    else
+
+
+      redirect_to user_path(current_user.id)
+
+    end
 
   end
 

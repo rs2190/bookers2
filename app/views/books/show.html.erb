@@ -10,13 +10,13 @@
               <tbody>
                 <tr>
                   <td>
-                     <%= link_to user_path(@user.id) do %>
+                     <%= link_to user_path(@user) do %>
                         <%= image_tag @book2.user.get_profile_image(100,100) %><br>
                         <%= @user.name %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to book_path(@book2.id) do %>
+                    <%= link_to book_path(@book2) do %>
                       <%= @book2.title %>
                     <% end %>
                   </td>
@@ -25,12 +25,13 @@
                   </td>
                   <% if @book2.user.id == current_user.id %>
                   <td>
-                    <%=  link_to "Edit", edit_book_path(@book2.id), class: "btn btn-success" %>
+                    <%=  link_to "Edit", edit_book_path(@book2), class: "btn btn-success" %>
                   </td>
                   <td>
-                    <%= form_with model: @book2, method: :delete, url: book_path(@book2.id) do |f| %>
-                      <%= f.submit 'Destroy', data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
-                    <% end %>
+                    <!--%= form_with model: @book2, method: :delete, url: book_path(@book2) do |f| %>
+                      <!--%= f.submit 'Destroy', data: { confirm: "本当に消しますか？" }, class:"btn btn-sm btn-danger" %>
+                    <!--% end %-->
+                    <%= link_to "Destroy", book_path(@book2), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
                   </td>
                   <% end %>
                 </tr>

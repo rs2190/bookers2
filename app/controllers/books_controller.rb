@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   # 別ユーザーが更新などしないように制御を行う。
-  before_action :is_matching_login_user_books, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user_books, only: [:update, :destroy]
 
   def index
 
@@ -36,7 +36,7 @@ class BooksController < ApplicationController
 
   def show
 
-    user_info_new_book_current_user
+    user_info_new_book_show
     @book2 = book_find
 
 

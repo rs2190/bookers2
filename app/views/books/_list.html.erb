@@ -12,17 +12,11 @@
     <% books.each do |book| %>
     <tbody>
       <tr>
-        <% if controller_path == 'books' && action_name == 'index' %>
         <td>
-          <%= image_tag book.user.get_profile_image(100,100) %>
-        </td>
-        <% else %>
-        <td>
-          <%= link_to user_path(user.id) do %>
+          <%= link_to user_path(book.user.id) do %>
             <%= image_tag book.user.get_profile_image(100,100) %>
           <% end %>
         </td>
-        <% end %>
         <td>
         <%= link_to book_path(book.id) do %>
           <%= book.title %>
