@@ -36,8 +36,10 @@ class BooksController < ApplicationController
 
   def show
 
-    user_info_new_book_show
+    # user_info_new_book_show
     @book2 = book_find
+    @book = book_new
+    @user = User.find(@book2.user.id)
 
 
   end
